@@ -7,7 +7,10 @@
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h2 class="text-white">Projects list</h2>
-                    <a href="{{ route('admin.projects.create') }}" class="fs-4 btn btn-light blue-01">Create</a>
+                    <div class="d-flex justify-content-end align-items-center">
+                        <a href="{{ route('admin.projects.create') }}" class="fs-5 btn btn-light blue-01 me-3">Create</a>
+                        <a href="{{ route('admin.dashboard') }}" class="fs-5 btn btn-secondary text-white">Go Dashboard</a>
+                    </div>
                 </div>
                 <table class="table">
                     <thead>
@@ -35,13 +38,6 @@
                                 <td class="d-flex justify-content-start flex-wrap">
                                     <a href="{{ route('admin.projects.show', $project->slug) }}"
                                         class="btn btn-warning m-1">Show</a>
-                                    <a href="{{ route('admin.projects.edit', $project->slug) }}"
-                                        class="btn btn-success m-1">Edit</a>
-                                    <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="delete-btn btn btn-danger m-1">Delete</button>
-                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -51,5 +47,4 @@
             </div>
         </div>
     </div>
-    @include('partials.modal')
 @endsection

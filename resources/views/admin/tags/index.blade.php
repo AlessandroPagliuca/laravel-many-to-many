@@ -7,7 +7,10 @@
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h2 class="text-white">Tags list</h2>
-                    <a href="{{ route('admin.tags.create') }}" class="fs-4 btn btn-light blue-01">Create</a>
+                    <div class="d-flex justify-content-end align-items-center">
+                        <a href="{{ route('admin.tags.create') }}" class="fs-5 btn btn-light blue-01 me-3">Create</a>
+                        <a href="{{ route('admin.dashboard') }}" class="fs-5 btn btn-secondary text-white">Go Dashboard</a>
+                    </div>
                 </div>
                 <table class="table">
                     <thead>

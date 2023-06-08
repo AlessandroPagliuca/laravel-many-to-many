@@ -2,7 +2,11 @@
 
 @section('content')
     <section class="container padding-home">
-        <h1 class="text-white">Insert new tag </h1>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="fs-3 text-white">Insert new tag </h2>
+            <a href="{{ route('admin.tags.index') }}" class="btn btn-warning">Go back</a>
+        </div>
         <form action="{{ route('admin.tags.store') }}" method="POST">
             @csrf
 

@@ -2,10 +2,13 @@
 
 @section('content')
     <div class="container padding-home">
-        <h2 class="fs-3 text-secondary my-4 p-2">
-            {{ __('Selected tag') }}
-        </h2>
-        <a href="{{ route('admin.tags.index', $tag->slug) }}" class="btn btn-warning m-1">Go all tags</a>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="fs-3 text-secondary my-4 p-2">
+                {{ __('Selected tag') }}
+            </h2>
+            <a href="{{ route('admin.tags.index', $tag->slug) }}" class="btn btn-warning m-1">Go back</a>
+        </div>
         <!--Selected Tag -->
         <div class="row flex-column justify-content-center">
             <div class="col-12">

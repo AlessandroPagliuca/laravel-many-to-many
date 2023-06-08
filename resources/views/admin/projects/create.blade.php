@@ -2,15 +2,20 @@
 
 @section('content')
     <section class="container padding-home">
-        <h1 class="blue-01">Insert new project</h1>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="text-white">Insert new project</h2>
+            <a href="{{ route('admin.projects.index') }}" class="fs-4 btn btn-light blue-01">Go back</a>
+        </div>
+
         <form action="{{ route('admin.projects.store') }}" method="POST">
             @csrf
 
             <div class="mb-3">
                 <label for="title" class="form-label blue-01 fw-bold">Title</label>
                 <input type="text" class="form-control @error('title') is-invalid
-                @enderror" name="title"
-                    id="title" aria-describedby="titleComic" value=" {{ old('title') }} ">
+                @enderror"
+                    name="title" id="title" aria-describedby="titleComic" value=" {{ old('title') }} ">
                 @error('title')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -69,12 +74,12 @@
                 @enderror
             </div>
             <div class="form-group">
-                <p>Select one or more tag:</p>
+                <p class="text-white">Select one or more tag:</p>
                 @foreach ($tags as $tag)
-                    <div>
+                    <div class="text-white">
                         <input type="checkbox" name="tags[]" value="{{ $tag->id }}" class="form-check-input"
                             {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }}>
-                        <label for="" class="form-check-label">{{ $tag->name }}</label>
+                        <label for="tags[]" class="form-check-label">{{ $tag->name }}</label>
                     </div>
                 @endforeach
                 @error('tags')

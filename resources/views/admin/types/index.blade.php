@@ -5,7 +5,10 @@
 
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h1 class="text-white">Types list</h1>
-            <a href="{{ route('admin.types.create') }}" class="fs-4 btn btn-light blue-01">Create</a>
+            <div class="d-flex justify-content-end align-items-center">
+                <a href="{{ route('admin.types.create') }}" class="fs-5 btn btn-light blue-01 me-3">Create</a>
+                <a href="{{ route('admin.dashboard') }}" class="fs-5 btn btn-secondary text-white">Go Dashboard</a>
+            </div>
         </div>
         <table class="table">
             <thead>
@@ -13,7 +16,9 @@
                     <th scope="col">ID</th>
                     <th scope="col">Type</th>
                     <th scope="col">Created at</th>
-                    <th scope="col">Tools</th>
+                    <th scope="col">
+                        <i class="fa-solid fa-hammer"></i>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -24,12 +29,6 @@
                         <td>{{ $type->created_at }}</td>
                         <td class="d-flex justify-content-start flex-wrap">
                             <a href="{{ route('admin.types.show', $type->slug) }}" class="btn btn-warning m-1">Show</a>
-                            <a href="{{ route('admin.types.edit', $type->slug) }}" class="btn btn-success m-1">Edit</a>
-                            <form action="{{ route('admin.types.destroy', $type->slug) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="delete-btn btn btn-danger m-1">Delete</button>
-                            </form>
                         </td>
                     </tr>
                 @endforeach

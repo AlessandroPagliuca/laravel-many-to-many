@@ -2,15 +2,21 @@
 
 @section('content')
     <section class="container padding-home">
-        <h1 class="blue-01">Edit project: {{ $project->name }} </h1>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="blue-01">Edit project: {{ $project->name }} </h2>
+            <a href="{{ route('admin.projects.show', $project->slug) }}" class="btn btn-warning m-1">Go back</a>
+
+        </div>
         <form action="{{ route('admin.projects.update', $project->slug) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="mb-3">
                 <label for="title" class="form-label blue-01 fw-bold">Title</label>
                 <input type="text" class="form-control @error('title') is-invalid
-                @enderror" name="title"
-                    id="title" aria-describedby="titleComic" value=" {{ old('title', $project->title) }} ">
+                @enderror"
+                    name="title" id="title" aria-describedby="titleComic"
+                    value=" {{ old('title', $project->title) }} ">
                 @error('title')
                     <div class="invalid-feedback">
                         {{ $message }}

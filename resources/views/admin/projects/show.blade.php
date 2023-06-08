@@ -2,10 +2,14 @@
 
 @section('content')
     <div class="container padding-home">
-        <h2 class="fs-3 text-secondary my-4 p-2">
-            {{ __('Selected project') }}
-        </h2>
-        <a href="{{ route('admin.projects.index', $project->slug) }}" class="btn btn-warning m-1">Go all projects</a>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="fs-3 text-secondary my-4 p-2">
+                {{ __('Selected project') }}
+            </h2>
+            <a href="{{ route('admin.projects.index', $project->slug) }}" class="btn btn-warning m-1">Go back</a>
+
+        </div>
         <!--Selected project -->
         <div class="row flex-column justify-content-center">
             <div class="col-12">
@@ -58,4 +62,6 @@
                     </tbody>
                 </table>
             </div>
+            @include('partials.modal')
+
         @endsection
