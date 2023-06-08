@@ -6,7 +6,7 @@
             {{ __('Selected project') }}
         </h2>
         <a href="{{ route('admin.projects.index', $project->slug) }}" class="btn btn-warning m-1">Go all projects</a>
-        <!--Projects list -->
+        <!--Selected project -->
         <div class="row flex-column justify-content-center">
             <div class="col-12">
                 <table class="table">
@@ -44,8 +44,6 @@
                                 @endif
                             </td>
                             <td class="d-flex justify-content-start flex-wrap">
-                                <a href="{{ route('admin.projects.show', $project->slug) }}"
-                                    class="btn btn-warning m-1">Show</a>
                                 <a href="{{ route('admin.projects.edit', $project->slug) }}"
                                     class="btn btn-success m-1">Edit</a>
                                 <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
