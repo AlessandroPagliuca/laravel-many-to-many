@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\StoreProjectRequest;
@@ -33,7 +34,8 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        $tags = Tag::all();
+        return view('admin.projects.create', compact('types', 'tags'));
     }
 
     /**
@@ -71,7 +73,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $tags = Tag::all();
+        return view('admin.projects.edit', compact('project', 'types', 'tags'));
     }
 
     /**
