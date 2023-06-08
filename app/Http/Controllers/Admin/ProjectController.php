@@ -50,7 +50,11 @@ class ProjectController extends Controller
         $slug = Str::slug($request->title, '-');
         $form_data['slug'] = $slug;
         $newProject = Project::create($form_data);
-        return redirect()->route('admin.projects.show', ['project' => $newProject]);
+        if ($request->has('tags')) {
+            $newProject->tags()->attach($request->tags);
+        }
+        ;
+        return redirect()->route('admin.projects.show', $newProject->slug);
     }
 
     /**
@@ -87,8 +91,15 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $form_data = $request->validated();
+        $slug = Str::slug($request->title, '-');
+        $form_data['slug'] = $slug;
         $project->update($form_data);
-        return view('admin.projects.show', compact('project'));
+        if ($request->has('tags')) {
+            $project->tags()->sync($request->tags);
+        } else {
+            $project->tags()->sync([]);
+        }
+        return redirect()->route('admin.projects.show', $project->slug);
     }
 
     /**
