@@ -48,7 +48,7 @@ class ProjectController extends Controller
         $slug = Str::slug($request->title, '-');
         $form_data['slug'] = $slug;
         $newProject = Project::create($form_data);
-        return redirect()->route('admin.projects.index', $newProject->slug);
+        return redirect()->route('admin.projects.show', ['project' => $newProject]);
     }
 
     /**
@@ -85,8 +85,7 @@ class ProjectController extends Controller
     {
         $form_data = $request->validated();
         $project->update($form_data);
-        $projects = Project::all();
-        return view('admin.projects.show', compact('projects'));
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
