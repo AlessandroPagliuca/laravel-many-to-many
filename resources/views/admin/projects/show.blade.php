@@ -36,9 +36,9 @@
                             <td>
                                 @if ($project->tags && count($project->tags) > 0)
                                     <div>
-                                        @foreach ($post->tags as $tag)
+                                        @foreach ($project->tags as $tag)
                                             <a href="{{ route('admin.tags.show', $tag->slug) }}"
-                                                class="badge rounded-pill text-bg-info">{{ $tag->name }}</a>
+                                                class="badge rounded-pill bg-primary text-white">{{ $tag->name }}</a>
                                         @endforeach
                                     </div>
                                 @endif
